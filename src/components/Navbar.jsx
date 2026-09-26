@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css';
@@ -31,14 +31,40 @@ export default function Navbar() {
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = (href) => {
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
+  const handleClick = useCallback((href) => {
     setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
+    // Slight delay to allow menu close animation
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }, mobileOpen ? 200 : 0);
+  }, [mobileOpen]);
 
   return (
     <>
@@ -64,7 +90,7 @@ export default function Navbar() {
               >
                 {link.label}
                 {activeSection === link.href.slice(1) && (
-                  <motion.div className="navbar__link-indicator" layoutId="nav-indicator" />
+                  <motion.div className="navbar__link-indicator" layoutId="nav-indicator" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
                 )}
               </a>
             ))}
@@ -84,15 +110,15 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Full screen overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             className="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, clipPath: 'circle(0% at calc(100% - 2.5rem) 2rem)' }}
+            animate={{ opacity: 1, clipPath: 'circle(150% at calc(100% - 2.5rem) 2rem)' }}
+            exit={{ opacity: 0, clipPath: 'circle(0% at calc(100% - 2.5rem) 2rem)' }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -102,14 +128,22 @@ export default function Navbar() {
                 onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.3, ease: 'easeOut' }}
               >
                 {link.label}
               </motion.a>
             ))}
-            <a href="#contact" className="btn-gold" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }} onClick={(e) => { e.preventDefault(); handleClick('#contact'); }}>
+            <motion.a
+              href="#contact"
+              className="btn-gold"
+              style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}
+              onClick={(e) => { e.preventDefault(); handleClick('#contact'); }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            >
               Hire Me
-            </a>
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

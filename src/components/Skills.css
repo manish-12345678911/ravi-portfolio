@@ -1,12 +1,12 @@
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
 .skills__category {
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .skills__category-header {
@@ -21,7 +21,7 @@
 }
 
 .skills__category-title {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -40,7 +40,7 @@
 }
 
 .skills__item-name {
-  font-size: 0.85rem;
+  font-size: clamp(0.78rem, 1.8vw, 0.85rem);
   font-weight: 500;
   color: var(--text-secondary);
 }
@@ -64,6 +64,7 @@
   background: var(--gradient-gold);
   border-radius: var(--radius-full);
   position: relative;
+  will-change: width;
 }
 
 .skills__bar-fill::after {
@@ -81,14 +82,14 @@
 /* Tools */
 .skills__tools {
   text-align: center;
-  padding: 2.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
   background: var(--bg-glass);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
 }
 
 .skills__tools-title {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
@@ -107,11 +108,17 @@
   background: rgba(250, 204, 21, 0.06);
   border: 1px solid rgba(250, 204, 21, 0.12);
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.82rem);
   font-weight: 500;
   color: var(--text-secondary);
   cursor: default;
-  transition: all var(--transition-base);
+  transition: color var(--transition-base),
+              border-color var(--transition-base),
+              background var(--transition-base),
+              box-shadow var(--transition-base),
+              transform var(--transition-base);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .skills__tool-tag:hover {
@@ -121,8 +128,22 @@
   box-shadow: var(--shadow-gold);
 }
 
+/* === RESPONSIVE === */
+
 @media (max-width: 768px) {
   .skills__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills__tools {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .skills__tool-tag {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
   }
 }

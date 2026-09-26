@@ -13,6 +13,22 @@ export default function About() {
   return (
     <section id="about" className="section about">
       <div className="container">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title">About <span className="highlight">Me</span></h2>
+          <p className="section-subtitle">
+            I'm Ravi Kumar, a CMA-qualified professional with a deep passion for cost 
+            management, financial analysis, and strategic business advisory. Currently 
+            preparing for campus placement, I bring a combination of strong academic 
+            foundations and practical experience.
+          </p>
+        </motion.div>
+
         <div className="about__grid">
           <motion.div
             className="about__left"
@@ -41,15 +57,6 @@ export default function About() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div className="section-header">
-              <h2 className="section-title">About <span className="highlight">Me</span></h2>
-              <p className="section-subtitle">
-                I'm Ravi Kumar, a CMA-qualified professional with a deep passion for cost 
-                management, financial analysis, and strategic business advisory. Currently 
-                preparing for campus placement, I bring a combination of strong academic 
-                foundations and practical experience.
-              </p>
-            </div>
 
             <p className="about__detail">
               With hands-on experience in budgeting, variance analysis, and cost optimization 

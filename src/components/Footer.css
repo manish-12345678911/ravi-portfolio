@@ -1,7 +1,7 @@
 .footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
-  padding: 3rem 0 2rem;
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(1.5rem, 3vw, 2rem);
 }
 
 .footer__inner {
@@ -33,27 +33,29 @@
 
 .footer__logo-text {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .footer__tagline {
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
   color: var(--text-muted);
   margin-top: 0.35rem;
 }
 
 .footer__links {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
 }
 
 .footer__links a {
-  font-size: 0.85rem;
+  font-size: clamp(0.78rem, 1.8vw, 0.85rem);
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
+  padding: 0.25rem 0;
 }
 
 .footer__links a:hover {
@@ -71,7 +73,8 @@
   border-radius: var(--radius-sm);
   color: var(--gold-400);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: background var(--transition-base);
+  flex-shrink: 0;
 }
 
 .footer__scroll-top:hover {
@@ -82,7 +85,7 @@
   width: 100%;
   height: 1px;
   background: var(--border-subtle);
-  margin: 2rem 0 1.5rem;
+  margin: clamp(1.25rem, 3vw, 2rem) 0 clamp(1rem, 2vw, 1.5rem);
 }
 
 .footer__bottom {
@@ -94,7 +97,7 @@
 }
 
 .footer__copyright {
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
   color: var(--text-muted);
 }
 
@@ -102,7 +105,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
   color: var(--text-muted);
 }
 
@@ -111,6 +114,8 @@
   fill: #ef4444;
 }
 
+/* === RESPONSIVE === */
+
 @media (max-width: 768px) {
   .footer__inner {
     flex-direction: column;
@@ -118,12 +123,21 @@
   }
 
   .footer__links {
-    flex-wrap: wrap;
     justify-content: center;
   }
 
   .footer__bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__links {
+    gap: 0.75rem;
+  }
+
+  .footer__links a {
+    font-size: 0.78rem;
   }
 }

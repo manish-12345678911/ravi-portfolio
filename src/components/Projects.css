@@ -1,6 +1,6 @@
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
   position: relative;
   overflow: hidden;
 }
@@ -33,6 +33,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .project-card__icon {
@@ -42,6 +44,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
+  flex-shrink: 0;
 }
 
 .project-card__category {
@@ -53,17 +56,18 @@
   padding: 0.3rem 0.75rem;
   background: rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .project-card__title {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.4;
 }
 
 .project-card__desc {
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.85rem);
   color: var(--text-secondary);
   line-height: 1.7;
   flex-grow: 1;
@@ -96,6 +100,13 @@
   border-radius: var(--radius-full);
   font-size: 0.72rem;
   color: var(--text-muted);
+  transition: color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.project-card__tech-tag:hover {
+  color: var(--gold-300);
+  border-color: var(--border-gold);
 }
 
 .project-card__link {
@@ -106,16 +117,36 @@
   font-weight: 500;
   color: var(--gold-400);
   text-decoration: none;
-  transition: gap var(--transition-base);
+  transition: gap var(--transition-base),
+              color var(--transition-base);
   margin-top: 0.5rem;
+  min-height: 44px;
 }
 
 .project-card__link:hover {
   gap: 0.65rem;
 }
 
+/* === RESPONSIVE === */
+
 @media (max-width: 768px) {
   .projects__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project-card__tech {
+    gap: 0.3rem;
+  }
+
+  .project-card__tech-tag {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
   }
 }

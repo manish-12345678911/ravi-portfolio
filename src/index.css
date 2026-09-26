@@ -49,11 +49,11 @@
   --font-display: 'Playfair Display', Georgia, serif;
   
   /* Spacing */
-  --section-padding: clamp(4rem, 8vw, 7rem);
+  --section-padding: clamp(3.5rem, 8vw, 7rem);
   --container-max: 1200px;
-  --container-padding: clamp(1rem, 4vw, 2rem);
+  --container-padding: clamp(1.25rem, 5vw, 2rem);
   
-  /* Transitions */
+  /* Transitions - GPU accelerated */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -89,6 +89,14 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent layout shifts from images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Custom Scrollbar */
@@ -120,6 +128,7 @@ body {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  width: 100%;
 }
 
 .section {
@@ -131,9 +140,10 @@ body {
   display: none; /* Replaced by new inline title format */
 }
 
+/* Section Titles — Responsive & Smooth */
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
@@ -144,6 +154,9 @@ body {
   background-clip: unset;
   position: relative;
   display: inline-block;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .section-title .highlight {
@@ -156,50 +169,54 @@ body {
 .section-title::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 4px;
+  width: 140px;
+  height: 6px;
   background: var(--gradient-gold);
   border-radius: var(--radius-full);
-  margin-top: 0.85rem;
+  margin-top: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
 }
 
-/* Center the underline when title is centered */
-.section-header[style*="text-align: center"] .section-title::after,
-.section-header--center .section-title::after {
+.section-subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
   margin-left: auto;
   margin-right: auto;
 }
 
-.section-subtitle {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  line-height: 1.7;
-}
-
 .section-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
 }
 
-/* Glass Card */
+/* Glass Card — GPU Optimized */
 .glass-card {
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: all var(--transition-base);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  transition: background var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base),
+              transform var(--transition-base);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .glass-card:hover {
   background: var(--bg-glass-hover);
   border-color: var(--border-gold);
   box-shadow: var(--shadow-gold);
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0);
 }
 
-/* Gold Button */
+/* Gold Button — Touch Friendly */
 .btn-gold {
   display: inline-flex;
   align-items: center;
@@ -208,23 +225,34 @@ body {
   background: var(--gradient-gold);
   color: #0a0a0f;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 2vw, 0.9rem);
   font-weight: 600;
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              filter var(--transition-base);
   text-decoration: none;
   box-shadow: var(--shadow-gold);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  min-height: 48px; /* Touch target */
+  white-space: nowrap;
 }
 
 .btn-gold:hover {
-  transform: translateY(-2px);
+  transform: translate3d(0, -2px, 0);
   box-shadow: var(--shadow-gold-lg);
   filter: brightness(1.1);
 }
 
-/* Outline Button */
+.btn-gold:active {
+  transform: translate3d(0, 0, 0);
+  filter: brightness(0.95);
+}
+
+/* Outline Button — Touch Friendly */
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -233,19 +261,29 @@ body {
   background: transparent;
   color: var(--gold-400);
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 2vw, 0.9rem);
   font-weight: 600;
   border: 1.5px solid var(--border-gold);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: background var(--transition-base),
+              border-color var(--transition-base),
+              transform var(--transition-base);
   text-decoration: none;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  min-height: 48px; /* Touch target */
+  white-space: nowrap;
 }
 
 .btn-outline:hover {
   background: rgba(250, 204, 21, 0.08);
   border-color: var(--gold-400);
-  transform: translateY(-2px);
+  transform: translate3d(0, -2px, 0);
+}
+
+.btn-outline:active {
+  transform: translate3d(0, 0, 0);
 }
 
 /* Divider */
@@ -268,23 +306,23 @@ body {
   z-index: 0;
 }
 
-/* Grid */
+/* Grid — Responsive */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.5rem;
 }
 
-/* Animations */
+/* Animations — GPU Accelerated */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
 }
 
 @keyframes pulse-gold {
@@ -310,7 +348,64 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
-/* Responsive */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Prefers Reduced Motion — Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Touch device optimization — disable hover transforms on mobile */
+@media (hover: none) {
+  .glass-card:hover {
+    transform: none;
+  }
+  
+  .btn-gold:hover {
+    transform: none;
+  }
+  
+  .btn-outline:hover {
+    transform: none;
+  }
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Large tablets / small desktops */
+@media (max-width: 1024px) {
+  :root {
+    --container-max: 960px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+}
+
+/* Small tablets / large phones */
 @media (max-width: 768px) {
   .grid-2,
   .grid-3 {
@@ -318,6 +413,56 @@ body {
   }
   
   .section {
-    padding: clamp(3rem, 6vw, 5rem) 0;
+    padding: clamp(2.5rem, 5vw, 4rem) 0;
+  }
+  
+  .section-title::after {
+    width: 100px;
+    height: 5px;
+    margin-top: 0.6rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Medium phones */
+@media (max-width: 600px) {
+  :root {
+    --container-padding: 1rem;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .btn-gold,
+  .btn-outline {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.82rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .glass-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 0.875rem;
+  }
+  
+  .section-title {
+    font-size: 1.35rem;
   }
 }

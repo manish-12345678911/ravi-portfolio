@@ -7,7 +7,7 @@
 }
 
 .exp__card {
-  padding: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
 .exp__card-header {
@@ -29,14 +29,14 @@
 }
 
 .exp__card-role {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.2rem;
 }
 
 .exp__card-company {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
   font-weight: 500;
   color: var(--gold-400);
   margin-bottom: 0.5rem;
@@ -44,7 +44,7 @@
 
 .exp__card-meta {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -70,14 +70,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  padding-left: 3.5rem;
+  padding-left: clamp(0rem, 4vw, 3.5rem);
 }
 
 .exp__card-points li {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.88rem;
+  font-size: clamp(0.82rem, 1.8vw, 0.88rem);
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -89,10 +89,14 @@
 }
 
 /* Achievements */
+.achievements {
+  margin-top: 1rem;
+}
+
 .achievements__title {
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 2rem;
@@ -107,7 +111,7 @@
 
 .achievements__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -115,7 +119,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.25rem 1.5rem;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1.1rem, 2vw, 1.5rem);
 }
 
 .achievement__emoji {
@@ -124,21 +128,42 @@
 }
 
 .achievement__text {
-  font-size: 0.88rem;
+  font-size: clamp(0.82rem, 1.8vw, 0.88rem);
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .exp__card-points {
-    padding-left: 0;
-  }
+/* === RESPONSIVE === */
 
+@media (max-width: 768px) {
   .exp__card-header {
     flex-direction: column;
   }
 
+  .exp__card-points {
+    padding-left: 0;
+  }
+
   .achievements__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp__list {
+    margin-bottom: 3rem;
+  }
+
+  .exp__card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .exp__card-meta {
+    gap: 0.5rem;
+  }
+
+  .exp__card-points li {
+    gap: 0.35rem;
   }
 }
