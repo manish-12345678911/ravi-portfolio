@@ -1,0 +1,144 @@
+.exp__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.exp__card {
+  padding: 2rem;
+}
+
+.exp__card-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.exp__card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 204, 21, 0.1);
+  color: var(--gold-400);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.exp__card-role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.exp__card-company {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--gold-400);
+  margin-bottom: 0.5rem;
+}
+
+.exp__card-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exp__card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.exp__card-type {
+  padding: 0.2rem 0.6rem;
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px solid rgba(250, 204, 21, 0.15);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  color: var(--gold-300) !important;
+}
+
+.exp__card-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-left: 3.5rem;
+}
+
+.exp__card-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.exp__point-icon {
+  color: var(--gold-500);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Achievements */
+.achievements__title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.achievements__highlight {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.achievement__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.achievement__emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.achievement__text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .exp__card-points {
+    padding-left: 0;
+  }
+
+  .exp__card-header {
+    flex-direction: column;
+  }
+
+  .achievements__grid {
+    grid-template-columns: 1fr;
+  }
+}
