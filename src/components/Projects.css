@@ -95,8 +95,8 @@
 
 .project-card__tech-tag {
   padding: 0.25rem 0.65rem;
-  background: rgba(250, 204, 21, 0.06);
-  border: 1px solid rgba(250, 204, 21, 0.1);
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.15);
   border-radius: var(--radius-full);
   font-size: 0.72rem;
   color: var(--text-muted);

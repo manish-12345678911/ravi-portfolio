@@ -58,8 +58,8 @@
 
 .exp__card-type {
   padding: 0.2rem 0.6rem;
-  background: rgba(250, 204, 21, 0.08);
-  border: 1px solid rgba(250, 204, 21, 0.15);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: var(--radius-full);
   font-weight: 600;
   color: var(--gold-300) !important;

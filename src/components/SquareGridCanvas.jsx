@@ -31,11 +31,16 @@ export default function SquareGridCanvas({ cellSize = 45 }) {
     resize();
     window.addEventListener('resize', resize);
 
-    const activateSquare = (col, row, initialOpacity = 1.0) => {
+    const activateSquare = (col, row, initialOpacity = 1.0, isPrimary = false) => {
       const key = `${col},${row}`;
       const existing = activeSquares.get(key);
       const newOpacity = existing ? Math.max(existing.opacity, initialOpacity) : initialOpacity;
-      activeSquares.set(key, { col, row, opacity: newOpacity });
+      activeSquares.set(key, { 
+        col, 
+        row, 
+        opacity: newOpacity, 
+        isPrimary: isPrimary || existing?.isPrimary || false 
+      });
     };
 
     const handleMouseMove = (e) => {
@@ -48,14 +53,14 @@ export default function SquareGridCanvas({ cellSize = 45 }) {
       const col = Math.floor(x / cellSize);
       const row = Math.floor(y / cellSize);
 
-      // Primary square - medium strength
-      activateSquare(col, row, 0.85);
+      // Primary square - radiant champagne gold
+      activateSquare(col, row, 0.9, true);
 
-      // Subtle neighbor glow
-      activateSquare(col + 1, row, 0.25);
-      activateSquare(col - 1, row, 0.25);
-      activateSquare(col, row + 1, 0.25);
-      activateSquare(col, row - 1, 0.25);
+      // Neighbor squares - warm amber halo
+      activateSquare(col + 1, row, 0.35, false);
+      activateSquare(col - 1, row, 0.35, false);
+      activateSquare(col, row + 1, 0.35, false);
+      activateSquare(col, row - 1, 0.35, false);
     };
 
     const parent = canvas.parentElement?.parentElement || canvas.parentElement;
@@ -70,17 +75,17 @@ export default function SquareGridCanvas({ cellSize = 45 }) {
       ctx.clearRect(0, 0, width, height);
 
       const now = Date.now();
-      if (now - lastAmbientTime > 1000) {
+      if (now - lastAmbientTime > 1200) {
         lastAmbientTime = now;
         const cols = Math.ceil(width / cellSize);
         const rows = Math.ceil(height / cellSize);
         const randomCol = Math.floor(Math.random() * cols);
         const randomRow = Math.floor(Math.random() * rows);
-        activateSquare(randomCol, randomRow, 0.3);
+        activateSquare(randomCol, randomRow, 0.4, false);
       }
 
-      // Draw base subtle grid
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
+      // Draw base subtle grid with cool cyber cyan tint
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
       ctx.lineWidth = 1;
 
       const cols = Math.ceil(width / cellSize);
@@ -99,18 +104,36 @@ export default function SquareGridCanvas({ cellSize = 45 }) {
       }
       ctx.stroke();
 
-      // Render & decay active square lines only (medium glowing lines)
+      // Render & decay active square lines with Electric Cyan & Royal Sapphire palette
       for (const [key, sq] of activeSquares.entries()) {
         const x = sq.col * cellSize;
         const y = sq.row * cellSize;
 
-        // Clean golden glowing line border
-        ctx.strokeStyle = `rgba(250, 204, 21, ${sq.opacity * 0.85})`;
-        ctx.lineWidth = 1.2;
-        ctx.strokeRect(x, y, cellSize, cellSize);
+        if (sq.isPrimary) {
+          // Primary square: Electric Cyan with Royal Sapphire bloom
+          ctx.save();
+          ctx.shadowColor = `rgba(37, 99, 235, ${sq.opacity * 0.75})`;
+          ctx.shadowBlur = 8;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${sq.opacity * 0.95})`;
+          ctx.lineWidth = 1.25;
+          ctx.strokeRect(x, y, cellSize, cellSize);
+
+          // Subtle corner micro-sparkles in ice white-cyan
+          ctx.fillStyle = `rgba(224, 242, 254, ${sq.opacity * 0.9})`;
+          ctx.fillRect(x - 0.75, y - 0.75, 1.5, 1.5);
+          ctx.fillRect(x + cellSize - 0.75, y - 0.75, 1.5, 1.5);
+          ctx.fillRect(x - 0.75, y + cellSize - 0.75, 1.5, 1.5);
+          ctx.fillRect(x + cellSize - 0.75, y + cellSize - 0.75, 1.5, 1.5);
+          ctx.restore();
+        } else {
+          // Neighbor squares: Royal Sapphire
+          ctx.strokeStyle = `rgba(37, 99, 235, ${sq.opacity * 0.75})`;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x, y, cellSize, cellSize);
+        }
 
         // Decay opacity smoothly
-        sq.opacity *= 0.92;
+        sq.opacity *= 0.91;
         if (sq.opacity < 0.015) {
           activeSquares.delete(key);
         }

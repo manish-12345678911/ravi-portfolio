@@ -31,7 +31,7 @@
   height: clamp(250px, 40vw, 500px);
   top: -10%;
   right: -5%;
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%);
   animation: float 8s ease-in-out infinite;
 }
 
@@ -40,16 +40,16 @@
   height: clamp(180px, 28vw, 350px);
   bottom: 10%;
   left: -5%;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, transparent 70%);
   animation: float 10s ease-in-out infinite reverse;
 }
 
 .hero__orb--3 {
-  width: clamp(100px, 16vw, 200px);
-  height: clamp(100px, 16vw, 200px);
-  top: 40%;
-  left: 30%;
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.08) 0%, transparent 70%);
+  width: clamp(120px, 18vw, 240px);
+  height: clamp(120px, 18vw, 240px);
+  top: 35%;
+  left: 25%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.09) 0%, transparent 70%);
   animation: float 6s ease-in-out infinite;
 }
 
@@ -60,7 +60,7 @@
   opacity: 0;
   background: radial-gradient(
     360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(250, 204, 21, 0.05),
+    rgba(56, 189, 248, 0.06),
     transparent 65%
   );
   transition: opacity 0.5s ease;
@@ -349,7 +349,7 @@
   border-radius: 50%;
   border: 2px solid transparent;
   border-top-color: var(--gold-400);
-  border-right-color: var(--gold-500);
+  border-right-color: var(--gold-600);
   animation: spin 8s linear infinite;
   will-change: transform;
   transition: inset 0.4s ease, filter 0.4s ease;
@@ -357,10 +357,10 @@
 
 .hero__avatar-wrapper:hover .hero__avatar-ring {
   inset: -16px;
-  border-top-color: #fef08a;
+  border-top-color: #bae6fd;
   border-right-color: var(--gold-400);
-  border-bottom-color: rgba(250, 204, 21, 0.35);
-  filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.6));
+  border-bottom-color: rgba(56, 189, 248, 0.4);
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.65));
   animation-duration: 4s;
 }
 
@@ -373,16 +373,16 @@
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid rgba(250, 204, 21, 0.3);
+  border: 3px solid rgba(56, 189, 248, 0.35);
   background: var(--bg-tertiary);
   position: relative;
-  box-shadow: 0 0 40px rgba(250, 204, 21, 0.18);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.25);
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .hero__avatar-wrapper:hover .hero__avatar {
-  border-color: rgba(250, 204, 21, 0.7);
-  box-shadow: 0 0 55px rgba(250, 204, 21, 0.38);
+  border-color: rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 60px rgba(56, 189, 248, 0.45);
 }
 
 .hero__avatar-img {

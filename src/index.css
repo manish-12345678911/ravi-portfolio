@@ -1,48 +1,49 @@
 /* ============================================
-   DESIGN SYSTEM - Ravi Kumar CMA Portfolio
-   Dark theme with Gold/Amber accents
+   DESIGN SYSTEM - CMA Ravi Kumar Portfolio
+   Theme: Royal Sapphire & Electric Cyan (Fintech Executive)
    ============================================ */
 
 /* CSS Custom Properties */
 :root {
-  /* Colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-tertiary: #1a1a24;
-  --bg-card: #15151f;
-  --bg-glass: rgba(17, 17, 24, 0.7);
-  --bg-glass-hover: rgba(26, 26, 36, 0.85);
+  /* Colors - Deep Midnight Obsidian & Slate */
+  --bg-primary: #07090e;
+  --bg-secondary: #0c101b;
+  --bg-tertiary: #121829;
+  --bg-card: #0f1524;
+  --bg-glass: rgba(12, 16, 27, 0.78);
+  --bg-glass-hover: rgba(18, 24, 41, 0.9);
   
-  --gold-50: #fefce8;
-  --gold-100: #fef9c3;
-  --gold-200: #fef08a;
-  --gold-300: #fde047;
-  --gold-400: #facc15;
-  --gold-500: #d4a017;
-  --gold-600: #b8860b;
-  --gold-700: #92700c;
-  --gold-800: #78600d;
-  --gold-900: #654f12;
+  /* Royal Sapphire & Electric Cyan Accents */
+  --gold-50: #f0f9ff;
+  --gold-100: #e0f2fe;
+  --gold-200: #bae6fd;
+  --gold-300: #7dd3fc;
+  --gold-400: #38bdf8; /* Electric Cyan */
+  --gold-500: #0ea5e9;
+  --gold-600: #2563eb; /* Royal Sapphire */
+  --gold-700: #1d4ed8;
+  --gold-800: #1e40af;
+  --gold-900: #172554;
   
-  --text-primary: #f5f5f7;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --text-gold: #facc15;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-gold: #38bdf8;
   
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-gold: rgba(250, 204, 21, 0.3);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-gold: rgba(56, 189, 248, 0.3);
   
-  --gradient-gold: linear-gradient(135deg, #facc15, #d4a017, #b8860b);
-  --gradient-gold-soft: linear-gradient(135deg, rgba(250, 204, 21, 0.15), rgba(212, 160, 23, 0.05));
-  --gradient-dark: linear-gradient(180deg, #0a0a0f 0%, #111118 100%);
-  --gradient-radial: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.08) 0%, transparent 70%);
+  --gradient-gold: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #1d4ed8 100%);
+  --gradient-gold-soft: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(37, 99, 235, 0.05));
+  --gradient-dark: linear-gradient(180deg, #07090e 0%, #0c101b 100%);
+  --gradient-radial: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.09) 0%, transparent 70%);
   
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 4px 24px rgba(250, 204, 21, 0.15);
-  --shadow-gold-lg: 0 8px 40px rgba(250, 204, 21, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 4px 24px rgba(56, 189, 248, 0.22);
+  --shadow-gold-lg: 0 8px 40px rgba(37, 99, 235, 0.38);
   
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -109,18 +110,18 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-700);
+  background: #1e3a8a;
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-500);
+  background: #2563eb;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(250, 204, 21, 0.25);
-  color: var(--gold-100);
+  background: rgba(56, 189, 248, 0.28);
+  color: #f0f9ff;
 }
 
 /* Utility Classes */
@@ -176,7 +177,7 @@ img {
   margin-top: 0.6rem;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 0 8px rgba(250, 204, 21, 0.35);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
 }
 
 .section-subtitle {
@@ -216,14 +217,14 @@ img {
   transform: translate3d(0, -4px, 0);
 }
 
-/* Gold Button — Touch Friendly */
+/* Primary Action Button — Modern Electric Sapphire */
 .btn-gold {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 2rem;
   background: var(--gradient-gold);
-  color: #0a0a0f;
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: clamp(0.82rem, 2vw, 0.9rem);
   font-weight: 600;
@@ -234,17 +235,18 @@ img {
               box-shadow var(--transition-base),
               filter var(--transition-base);
   text-decoration: none;
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
   will-change: transform;
   transform: translate3d(0, 0, 0);
   min-height: 48px; /* Touch target */
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .btn-gold:hover {
   transform: translate3d(0, -2px, 0);
-  box-shadow: var(--shadow-gold-lg);
-  filter: brightness(1.1);
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.45);
+  filter: brightness(1.08);
 }
 
 .btn-gold:active {
@@ -277,7 +279,7 @@ img {
 }
 
 .btn-outline:hover {
-  background: rgba(250, 204, 21, 0.08);
+  background: rgba(56, 189, 248, 0.08);
   border-color: var(--gold-400);
   transform: translate3d(0, -2px, 0);
 }

@@ -33,12 +33,12 @@ const education = [
 ];
 
 const certifications = [
-  { name: 'CMA Certification – ICMAI', issuer: 'ICMAI', year: '2024', color: '#facc15' },
-  { name: 'Advanced Excel for Finance', issuer: 'Coursera', year: '2023', color: '#38bdf8' },
-  { name: 'Financial Modelling & Valuation', issuer: 'Udemy', year: '2023', color: '#a78bfa' },
+  { name: 'CMA Certification – ICMAI', issuer: 'ICMAI', year: '2024', color: '#38bdf8' },
+  { name: 'Advanced Excel for Finance', issuer: 'Coursera', year: '2023', color: '#60a5fa' },
+  { name: 'Financial Modelling & Valuation', issuer: 'Udemy', year: '2023', color: '#818cf8' },
   { name: 'GST Certification Course', issuer: 'ICAI', year: '2023', color: '#34d399' },
-  { name: 'Tally ERP 9 Professional', issuer: 'Tally Education', year: '2022', color: '#fb923c' },
-  { name: 'Power BI for Business Analytics', issuer: 'Microsoft', year: '2024', color: '#f472b6' },
+  { name: 'Tally ERP 9 Professional', issuer: 'Tally Education', year: '2022', color: '#38bdf8' },
+  { name: 'Cost Audit & Compliance – ICMAI', issuer: 'ICMAI', year: '2024', color: '#2563eb' },
 ];
 
 export default function Education() {

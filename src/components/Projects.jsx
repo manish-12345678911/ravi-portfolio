@@ -9,7 +9,7 @@ const projects = [
     description: 'Executed comprehensive inventory valuation for Raw Materials, WIP, and Finished Goods in compliance with Cost Accounting Standards and AS-2 / Ind AS 2, standardizing item valuation and resolving stock variances.',
     tech: ['Inventory Costing', 'BOM Verification', 'AS-2 / Ind AS 2', 'ERP / SAP', 'Advanced Excel'],
     icon: <Layers size={24} />,
-    color: '#facc15',
+    color: '#38bdf8',
     metrics: '100% Audit Compliance',
   },
   {

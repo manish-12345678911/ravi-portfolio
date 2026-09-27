@@ -30,7 +30,7 @@
 
 .about__image-frame:hover {
   border-color: var(--border-gold);
-  box-shadow: 0 12px 35px rgba(250, 204, 21, 0.15);
+  box-shadow: 0 12px 35px rgba(56, 189, 248, 0.2);
 }
 
 .about__image-frame::before {
@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-tertiary) 0%, rgba(250, 204, 21, 0.03) 100%);
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, rgba(56, 189, 248, 0.05) 100%);
 }
 
 .about__image-emoji {
@@ -150,7 +150,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(250, 204, 21, 0.1);
+  background: rgba(56, 189, 248, 0.1);
   color: var(--gold-400);
   border-radius: var(--radius-sm);
   flex-shrink: 0;
