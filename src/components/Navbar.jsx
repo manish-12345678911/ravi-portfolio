@@ -76,8 +76,8 @@ export default function Navbar() {
       >
         <div className="navbar__inner container">
           <a href="#home" className="navbar__logo" onClick={() => handleClick('#home')}>
-            <span className="navbar__logo-icon">RK</span>
-            <span className="navbar__logo-text">Ravi <span className="navbar__logo-highlight">Kumar</span></span>
+            <span className="navbar__logo-icon">CMA</span>
+            <span className="navbar__logo-text">CMA <span className="navbar__logo-highlight">Ravi Kumar</span></span>
           </a>
 
           <div className="navbar__links">

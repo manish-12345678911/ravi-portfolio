@@ -23,10 +23,8 @@ export default function About() {
         >
           <h2 className="section-title">About <span className="highlight">Me</span></h2>
           <p className="section-subtitle">
-            I'm Ravi Kumar, a CMA-qualified professional with a deep passion for cost 
-            management, financial analysis, and strategic business advisory. Currently 
-            preparing for campus placement, I bring a combination of strong academic 
-            foundations and practical experience.
+            I’m Ravi, a CMA-qualified professional with practical experience in Costing, 
+            Auditing, Finance, Accounting, and Taxation.
           </p>
         </motion.div>
 
@@ -62,10 +60,11 @@ export default function About() {
           >
 
             <p className="about__detail">
-              With hands-on experience in budgeting, variance analysis, and cost optimization 
-              gained through internships at leading firms, I am equipped to add immediate value 
-              to finance teams. My approach combines analytical rigor with clear communication 
-              to turn complex data into actionable insights.
+              I have hands-on exposure to product costing, BOM analysis, cost records, MIS, 
+              internal audits, GST, financial reporting, and tax compliance. Currently working 
+              as a <strong style={{ color: 'var(--gold-400)' }}>Costing Executive at Shivam Autotech Ltd.</strong>, 
+              I aim to leverage my technical knowledge and practical experience to contribute 
+              to business growth and effective cost management.
             </p>
 
             <div className="about__highlights">

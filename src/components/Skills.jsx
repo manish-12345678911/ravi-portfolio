@@ -41,8 +41,8 @@ const skillCategories = [
 ];
 
 const tools = [
-  'MS Excel', 'Tally Prime', 'SAP', 'Power BI', 'Google Sheets', 
-  'MS Word', 'MS PowerPoint', 'QuickBooks', 'Zoho Books', 'Python (Basics)',
+  'MS Excel', 'Tally Prime', 'SAP', 'Google Sheets', 
+  'MS Word', 'MS PowerPoint',
 ];
 
 export default function Skills() {

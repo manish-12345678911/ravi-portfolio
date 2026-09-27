@@ -70,7 +70,7 @@ export default function Hero() {
         >
           <h1 className="hero__title">
             <span className="hero__title-line">Hi, I'm</span>
-            <span className="hero__title-name">Ravi Kumar</span>
+            <span className="hero__title-name">CMA Ravi Kumar</span>
             <span className="hero__title-role">
               CMA Professional &{' '}
               <span className="hero__title-highlight">

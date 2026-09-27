@@ -13,8 +13,8 @@ export default function Footer() {
         <div className="footer__inner">
           <div className="footer__left">
             <div className="footer__logo">
-              <span className="footer__logo-icon">RK</span>
-              <span className="footer__logo-text">Ravi Kumar</span>
+              <span className="footer__logo-icon">CMA</span>
+              <span className="footer__logo-text">CMA Ravi Kumar</span>
             </div>
             <p className="footer__tagline">
               CMA Professional · Finance & Accounting Expert
@@ -44,7 +44,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} Ravi Kumar. All rights reserved.
+            © {new Date().getFullYear()} CMA Ravi Kumar. All rights reserved.
           </p>
           <p className="footer__made-with">
             Made with <Heart size={14} className="footer__heart" /> for campus placement
