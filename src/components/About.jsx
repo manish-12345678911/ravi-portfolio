@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Target, TrendingUp, BookOpen, Award } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 import './About.css';
 
 const highlights = [
@@ -39,9 +40,11 @@ export default function About() {
           >
             <div className="about__image-wrapper">
               <div className="about__image-frame">
-                <div className="about__image-placeholder">
-                  <span className="about__image-emoji">👨‍💼</span>
-                </div>
+                <img
+                  src={profileImg}
+                  alt="Ravi Kumar - CMA Professional"
+                  className="about__image"
+                />
               </div>
               <div className="about__exp-badge">
                 <span className="about__exp-number">CMA</span>

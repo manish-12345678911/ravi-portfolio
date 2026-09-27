@@ -1,8 +1,52 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, FileText, Mail } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
+import SquareGridCanvas from './SquareGridCanvas';
 import './Hero.css';
 
+const keywords = [
+  'Finance Expert',
+  'Cost Accountant',
+  'Financial Analyst',
+  'Cost Optimizer',
+  'Strategic Planner',
+  'Valuation Specialist',
+];
+
 export default function Hero() {
+  const [text, setText] = useState('');
+  const [keywordIndex, setKeywordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentKeyword = keywords[keywordIndex];
+
+    let timer;
+    if (!isDeleting) {
+      if (text.length < currentKeyword.length) {
+        timer = setTimeout(() => {
+          setText(currentKeyword.slice(0, text.length + 1));
+        }, 85);
+      } else {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1800);
+      }
+    } else {
+      if (text.length > 0) {
+        timer = setTimeout(() => {
+          setText(currentKeyword.slice(0, text.length - 1));
+        }, 45);
+      } else {
+        setIsDeleting(false);
+        setKeywordIndex((prev) => (prev + 1) % keywords.length);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, keywordIndex]);
+
   const scrollToAbout = () => {
     document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -14,7 +58,7 @@ export default function Hero() {
         <div className="hero__orb hero__orb--1" />
         <div className="hero__orb hero__orb--2" />
         <div className="hero__orb hero__orb--3" />
-        <div className="hero__grid-overlay" />
+        <SquareGridCanvas cellSize={48} />
       </div>
 
       <div className="hero__content container">
@@ -29,7 +73,10 @@ export default function Hero() {
             <span className="hero__title-name">Ravi Kumar</span>
             <span className="hero__title-role">
               CMA Professional &{' '}
-              <span className="hero__title-highlight">Finance Expert</span>
+              <span className="hero__title-highlight">
+                {text}
+                <span className="hero__typewriter-cursor">|</span>
+              </span>
             </span>
           </h1>
 
@@ -77,9 +124,11 @@ export default function Hero() {
           <div className="hero__avatar-wrapper">
             <div className="hero__avatar-ring" />
             <div className="hero__avatar">
-              <div className="hero__avatar-placeholder">
-                <span>RK</span>
-              </div>
+              <img
+                src={profileImg}
+                alt="Ravi Kumar - CMA Professional"
+                className="hero__avatar-img"
+              />
             </div>
           </div>
         </motion.div>
