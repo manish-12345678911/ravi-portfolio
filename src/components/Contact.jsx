@@ -21,10 +21,10 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: <Mail size={20} />, label: 'Email', value: 'ravi.kumar@email.com', href: 'mailto:ravi.kumar@email.com' },
-    { icon: <Phone size={20} />, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210' },
+    { icon: <Mail size={20} />, label: 'Email', value: 'ravishah5744@gmail.com', href: 'mailto:ravishah5744@gmail.com' },
+    { icon: <Phone size={20} />, label: 'Phone', value: '+91 99580 99213', href: 'tel:+919958099213' },
     { icon: <MapPin size={20} />, label: 'Location', value: 'New Delhi, India', href: null },
-    { icon: <LinkedinIcon size={20} />, label: 'LinkedIn', value: 'linkedin.com/in/ravikumar', href: 'https://linkedin.com/in/ravikumar' },
+    { icon: <LinkedinIcon size={20} />, label: 'LinkedIn', value: 'linkedin.com/in/cma-ravi-shah', href: 'https://www.linkedin.com/in/cma-ravi-shah-a6a52126b/' },
   ];
 
   return (

@@ -27,6 +27,14 @@ export default function Footer() {
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+            <a 
+              href="https://www.linkedin.com/in/cma-ravi-shah-a6a52126b/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              LinkedIn
+            </a>
           </div>
 
           <motion.button

@@ -108,7 +108,14 @@ export default function Hero() {
               <Mail size={18} />
               Get In Touch
             </a>
-            <a href="/resume.pdf" className="btn-outline" target="_blank" rel="noopener noreferrer">
+            <a 
+              href="/CMA-Ravi-CV.pdf" 
+              download="CMA-Ravi-CV.pdf" 
+              className="btn-outline" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Download CMA Ravi Kumar's Resume"
+            >
               <FileText size={18} />
               Download Resume
             </a>
